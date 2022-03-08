@@ -24,7 +24,7 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory:  ${{env.working-directory}}
+
 
     steps:
     # Checkout the repository to the GitHub Actions runner 
@@ -36,7 +36,7 @@ jobs:
       with:
         # Specify the script here
         inlineScript: |
-          az deployment group create -g $RG -n vm -f main.bicep --what-if 
+          az deployment group create -g $RG -n vm -f main.bicep --parameters adminPassword=${{ secrets.vmpwd }} --what-if 
 
 
    # - name: Setup tmate session
@@ -60,7 +60,6 @@ jobs:
     defaults:
       run:
         shell: bash
-        working-directory:  ${{env.working-directory}}
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -72,4 +71,4 @@ jobs:
       with:
         # Specify the script here
         inlineScript: |
-          az deployment group create -g $RG -n vm -f main.bicep 
+          az deployment group create -g $RG -n vm -f main.bicep  -p adminPassword=${{ secrets.vmpwd }}
