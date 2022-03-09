@@ -1,0 +1,10 @@
+include:
+  path: []
+  module:
+  # Allow local testing in Visual Studio Code
+  # https://azure.github.io/PSRule.Rules.Azure/validating-locally/
+  - 'PSRule.Rules.Azure'
+
+configuration:
+  AZURE_PARAMETER_FILE_EXPANSION: true
+  AZURE_BICEP_FILE_EXPANSION: true
